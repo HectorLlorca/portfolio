@@ -12,7 +12,7 @@
 	export let data: PageServerData;
 
 	const music = data.data;
-	const generes = ['happy', 'sad', 'angry', 'romantic', 'party', 'workout', 'chill'];
+	const generes = ['happy', 'sad', 'beach', 'party', 'chill'];
 
 	onMount(() => {
 		if (!$load && $storeWidth > 768) {
@@ -35,22 +35,26 @@
 		<div class="hero">
 			<AnimatedTitle title={'Music Moods'} />
 		</div>
+		<div class="filter-mood">
+			{#each generes as generes}
+				<button class="btn rounded px-6 py-0">{generes}</button>
+			{/each}
+		</div>
 		<div class="articles-section">
 			{#each music as music (music.id)}
 				<article>
-					<div class="info">
-						<h1 class="text-xl font-bold p-2">{music.title}</h1>
-						<p class="text-lg font-semibold">{music.artists}</p>
-						<button>{music.mood}</button>
-					</div>
 					<iframe
-						width="560"
-						height="315"
-						src={music.yt_url}
-						title="YouTube video player"
-						frameborder="0"
-						allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-						allowfullscreen />
+						title={music.title}
+						style="border-radius:12px"
+						src={music.spotify}
+						height="352"
+						frameBorder="0"
+						allowfullscreen=""
+						allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+						loading="lazy" />
+					<div class="info">
+						<button class="btn rounded">{music.mood}</button>
+					</div>
 				</article>
 			{/each}
 		</div>
@@ -66,32 +70,26 @@
 		gap: 2rem;
 		background-color: var(--music-bg-color);
 	}
+	.filter-mood {
+		display: flex;
+		justify-content: center;
+		gap: 1rem;
+		overflow-x: auto;
+	}
 	.articles-section {
 		display: grid;
-		place-content: center;
-		gap: 1rem;
+		grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+		justify-items: center;
+		gap: 0.5rem;
 	}
-
 	article {
 		display: grid;
-		justify-content: center;
-		align-items: center;
-		text-align: center;
-		grid-template-columns: repeat(2, 1fr);
-		button {
-			text-transform: capitalize;
-			font-weight: bold;
-			&:hover {
-				transform: scale(1.1);
-			}
-		}
+		gap: 0.5rem;
+		align-content: start;
+		justify-content: start;
+		justify-items: center;
 	}
 	iframe {
-		border: none;
-		background-color: #f8f8f8;
-		box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-		transition: opacity 0.2s ease-in-out;
-		overflow: hidden;
-		border-radius: 5px;
+		width: 350px;
 	}
 </style>
