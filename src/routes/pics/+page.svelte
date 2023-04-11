@@ -40,22 +40,6 @@
 		<div in:fade={{ duration: 1200 }} class="articles-section">
 			{#each pics as pic (pic.id)}
 				<article>
-					<label for={`my-modal-info` + pic.id} class="modal-info">
-						<ion-icon name="information-circle-outline" />
-					</label>
-					<input type="checkbox" id={'my-modal-info' + pic.id} class="modal-toggle" />
-					<div class="modal">
-						<div class="modal-box relative">
-							<label
-								for={'my-modal-info' + pic.id}
-								class="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
-							<h3 class="text-lg font-bold">{pic.title}</h3>
-							<p class="py-4">
-								{pic.description}
-							</p>
-						</div>
-					</div>
-
 					<label for={'my-modal-img' + pic.id} class="modal-img">
 						<ion-icon name="scan-outline" />
 					</label>
@@ -64,6 +48,8 @@
 					<label for={'my-modal-img' + pic.id} class="modal my-modal-img cursor-pointer">
 						<label class="modal-box modal-box-img relative" for="">
 							<img class="img-full" src={pic.img} alt="" />
+							<h1 class="font-bold">{pic.title}</h1>
+							<p>{pic.description}</p>
 						</label>
 					</label>
 					<img src={pic.img} alt="pic" class="rounded-box" />
@@ -95,10 +81,18 @@
 			}
 		}
 	}
-	.img-full {
-		width: 100%;
-		height: 100%;
-		object-fit: fill;
+
+	.modal-box-img {
+		display: grid;
+		align-content: start;
+		gap: 0.5rem;
+		min-height: fit-content;
+		min-width: 70dvw;
+
+		img {
+			width: 100%;
+			height: 100%;
+		}
 	}
 
 	ion-icon {
@@ -109,15 +103,15 @@
 		cursor: pointer;
 		transform: scale(1.1);
 	}
-	.modal-info {
-		position: absolute;
-		top: 0;
-		color: greenyellow;
-	}
 	.modal-img {
 		position: absolute;
 		top: 0;
 		right: 0;
 		color: greenyellow;
+	}
+	@media (max-width: 768px) {
+		.modal-box-img {
+			min-width: 100vw;
+		}
 	}
 </style>

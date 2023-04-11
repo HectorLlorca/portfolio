@@ -19,11 +19,11 @@
 	}
 	const setStroke = () => {
 		if ($theme === 'halloween') {
-			document.querySelectorAll('.bur').forEach((path) => {
+			document.querySelectorAll('.burger').forEach((path) => {
 				path.style.stroke = 'white';
 			});
 		} else {
-			document.querySelectorAll('.bur').forEach((path) => {
+			document.querySelectorAll('.burger').forEach((path) => {
 				path.style.stroke = 'black';
 			});
 		}
@@ -54,9 +54,9 @@
 		<label>
 			<input bind:this={input} on:click={handleMod} type="checkbox" />
 			<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-				<path class="line--1 bur" d="M0 70l28-28c2-2 2-2 7-2h64" />
-				<path class="line--2 bur" d="M0 50h99" />
-				<path class="line--3 bur" d="M0 30l28 28c2 2 2 2 7 2h64" />
+				<path class="line--1 burger" d="M0 70l28-28c2-2 2-2 7-2h64" />
+				<path class="line--2 burger" d="M0 50h99" />
+				<path class="line--3 burger" d="M0 30l28 28c2 2 2 2 7 2h64" />
 			</svg>
 		</label>
 	</div>
