@@ -46,8 +46,8 @@
 
 					<input type="checkbox" id={'my-modal-img' + pic.id} class="modal-toggle" />
 					<label for={'my-modal-img' + pic.id} class="modal my-modal-img cursor-pointer">
-						<label class="modal-box modal-box-img relative" for="">
-							<img class="img-full" src={pic.img} alt="" />
+						<label class={'modal-box modal-box-img relative ' + pic.position} for="">
+							<img class={'img-full img-' + pic.id} src={pic.img} alt="" />
 							<h1 class="font-bold text-2xl">{pic.title}</h1>
 							<p>{pic.description}</p>
 						</label>
@@ -83,20 +83,22 @@
 			}
 		}
 	}
-	article {
-	}
 
 	.modal-box-img {
 		display: grid;
 		align-content: start;
 		gap: 0.5rem;
 		min-height: fit-content;
-		min-width: 70dvw;
+		min-width: 80dvw;
 
 		img {
 			width: 100%;
 			height: 100%;
 		}
+	}
+	.vertical {
+		min-width: 50dvw;
+		min-height: 95dvh;
 	}
 
 	ion-icon {
@@ -116,6 +118,18 @@
 	@media (max-width: 768px) {
 		.modal-box-img {
 			min-width: 100vw;
+			min-height: 40vh;
+			padding: 0.2rem;
+			img {
+				min-width: 100%;
+				height: 100%;
+			}
+		}
+		.horizontal {
+			min-width: 100dvw;
+		}
+		.vertical {
+			min-height: 70dvh;
 		}
 	}
 </style>
