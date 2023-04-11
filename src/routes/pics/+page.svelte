@@ -11,7 +11,6 @@
 
 	let url = $page.url.pathname;
 	export let data: PageServerData;
-	console.log(data);
 
 	onMount(() => {
 		if (!$load && $storeWidth > 768) {

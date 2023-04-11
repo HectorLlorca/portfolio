@@ -2,11 +2,12 @@
 	import AnimatedTitle from '../../components/animated_title/animatedTitle.svelte';
 	import SectionButton from '../../components/section_button/sectionButton.svelte';
 	import { page } from '$app/stores';
-	let url = $page.url.pathname;
 	import { load } from '$lib/stores.js';
 	import { animate, stagger } from 'motion';
 	import { onMount } from 'svelte';
 	import { storeWidth } from '$lib/stores.js';
+
+	let url = $page.url.pathname;
 
 	onMount(() => {
 		if (!$load && $storeWidth > 768) {

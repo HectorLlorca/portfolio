@@ -5,7 +5,7 @@ export const load = (async () => {
     
 
     
-    // return {data: await supabase
-    //     .from('Pics')
-    //     .select() };
+    return {data: await supabase
+        .from('Pics')
+        .select() };
 }) satisfies PageServerLoad;

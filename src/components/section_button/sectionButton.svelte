@@ -29,11 +29,12 @@
 		'/Pics': 'var(--pics-bg-color)'
 	};
 	let img = {
-		'/': cv,
+		'/': $theme == 'lofi' ? cv : wcv,
 		'/Food': food,
 		'/Music': music,
 		'/Pics': camara
 	};
+	$: h1Color = $theme == 'lofi' ? 'black' : '#d3d3d3';
 	onMount(() => {});
 </script>
 
@@ -42,7 +43,7 @@
 	class="btn sec-btn"
 	style={`background-color:${bgColors['/' + section]}`}>
 	<img src={img['/' + section]} alt="cv-icon" />
-	<h1 style={`color:${$theme === 'lofi' ? 'black' : '#d3d3d3'}`}>{section}</h1>
+	<h1 style={`color:${!section ? h1Color : 'black'}`}>{section || 'Portfolio'}</h1>
 </button>
 
 <style>
