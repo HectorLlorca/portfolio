@@ -48,7 +48,7 @@
 					<label for={'my-modal-img' + pic.id} class="modal my-modal-img cursor-pointer">
 						<label class="modal-box modal-box-img relative" for="">
 							<img class="img-full" src={pic.img} alt="" />
-							<h1 class="font-bold">{pic.title}</h1>
+							<h1 class="font-bold text-2xl">{pic.title}</h1>
 							<p>{pic.description}</p>
 						</label>
 					</label>
@@ -71,15 +71,19 @@
 		justify-items: center;
 		justify-content: center;
 		grid-template-columns: repeat(auto-fit, minmax(300px, 500px));
-		grid-template-rows: minmax(400px, 1fr);
+
 		article {
 			position: relative;
+			display: grid;
+			place-self: center;
 			img {
 				-webkit-box-shadow: 0px 0px 36px -2px rgba(0, 0, 0, 0.87);
 				-moz-box-shadow: 0px 0px 36px -2px rgba(0, 0, 0, 0.87);
 				box-shadow: 0px 0px 36px -2px rgba(0, 0, 0, 0.87);
 			}
 		}
+	}
+	article {
 	}
 
 	.modal-box-img {
