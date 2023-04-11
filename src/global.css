@@ -1,0 +1,57 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+:root {
+	/* colors */
+
+	--lofi-bg-color: #ffff;
+	--halloween-bg-color: #212121;
+	--food-bg-color: rgb(94, 163, 236);
+	--music-bg-color: rgb(246, 68, 68);
+	--pics-bg-color: rgb(255, 180, 0);
+}
+
+html,
+body {
+	height: 100%;
+	overflow-x: hidden;
+}
+/* scrollbar */
+/* Create a custom scrollbar track */
+::-webkit-scrollbar-track {
+	background-color: #666;
+}
+
+/* Create a custom scrollbar thumb */
+::-webkit-scrollbar-thumb {
+	background-color: #555;
+	border-radius: 10px;
+}
+
+/* Change the width of the scrollbar */
+::-webkit-scrollbar {
+	z-index: 50;
+	width: 7px;
+}
+
+/* Hide the scrollbar when not hovering */
+::-webkit-scrollbar-thumb:hover {
+	background-color: #999;
+}
+
+/* Style the scrollbar for Firefox */
+scrollbar {
+	width: 10px;
+	background-color: #f5f5f5;
+}
+
+scrollbar-thumb {
+	background-color: #ccc;
+	border-radius: 10px;
+	border: 3px solid #f5f5f5;
+}
+
+/* Hide the scrollbar when not hovering */
+scrollbar-thumb:hover {
+	background-color: #999;
+}
