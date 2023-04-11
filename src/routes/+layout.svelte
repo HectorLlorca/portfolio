@@ -33,6 +33,7 @@
 
 <style>
 	.main {
+		min-height: 100%;
 	}
 	:global(.container) {
 		display: flex;
