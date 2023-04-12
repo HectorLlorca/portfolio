@@ -87,6 +87,11 @@
 		gap: 1rem;
 		justify-content: center;
 		padding-bottom: 0.5rem;
+		button {
+			&:hover {
+				transform: scale(1.1);
+			}
+		}
 		@media (max-width: 768px) {
 			justify-content: start;
 			overflow-x: auto;

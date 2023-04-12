@@ -69,7 +69,6 @@
 		display: grid;
 		grid-template-columns: repeat(auto-fit, minmax(300px, 450px));
 		align-items: center;
-		grid-template-rows: 1fr, min-content;
 		justify-content: center;
 		gap: 0.8rem;
 	}
