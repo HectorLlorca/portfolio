@@ -3,9 +3,8 @@ import { supabase } from '$lib/supabaseClient.js';
 
 export const load = (async () => {
 
-    const { data } = await supabase.from('Music').select();
-    
+    const {data}  = await supabase.from('Music').select("*").order('created_at', {ascending: false});
 
     
-    return {data}
+    return {data};
 }) satisfies PageServerLoad;

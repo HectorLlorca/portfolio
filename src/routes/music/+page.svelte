@@ -7,12 +7,22 @@
 	import { onMount } from 'svelte';
 	import { storeWidth } from '$lib/stores.js';
 	import type { PageServerData } from './$types';
+	import { getMood } from './helpers.ts';
 
 	let url = $page.url.pathname;
 	export let data: PageServerData;
 
 	const music = data.data;
 	const generes = ['happy', 'sad', 'beach', 'party', 'chill'];
+	let filter = music;
+
+	const setFilter = async (e) => {
+		let mood = e.target.innerText.toLowerCase();
+
+		const { data } = await getMood(mood);
+
+		filter = data;
+	};
 
 	onMount(() => {
 		if (!$load && $storeWidth > 768) {
@@ -37,24 +47,22 @@
 		</div>
 		<div class="filter-mood">
 			{#each generes as generes}
-				<button class="btn rounded px-6 py-0">{generes}</button>
+				<button on:click={(e) => setFilter(e)} class="btn rounded-2xl px-8">{generes}</button>
 			{/each}
 		</div>
 		<div class="articles-section">
-			{#each music as music (music.id)}
+			{#each filter as filter (filter.id)}
 				<article>
+					<button on:click={(e) => setFilter(e)} class="article-btn">{filter.mood}</button>
 					<iframe
-						title={music.title}
+						title={filter.title}
 						style="border-radius:12px"
-						src={music.spotify}
+						src={filter.spotify}
 						height="352"
 						frameBorder="0"
 						allowfullscreen=""
 						allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
 						loading="lazy" />
-					<div class="info">
-						<button class="btn rounded">{music.mood}</button>
-					</div>
 				</article>
 			{/each}
 		</div>
@@ -67,29 +75,51 @@
 <style lang="scss">
 	section {
 		display: grid;
+		align-content: start;
 		gap: 2rem;
 		background-color: var(--music-bg-color);
 	}
+	.hero {
+		margin-bottom: 2rem;
+	}
 	.filter-mood {
 		display: flex;
-		justify-content: center;
 		gap: 1rem;
-		overflow-x: auto;
+		justify-content: center;
+		padding-bottom: 0.5rem;
+		@media (max-width: 768px) {
+			justify-content: start;
+			overflow-x: auto;
+		}
 	}
 	.articles-section {
 		display: grid;
-		grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-		justify-items: center;
-		gap: 0.5rem;
+		grid-template-columns: repeat(auto-fit, minmax(300px, 450px));
+		justify-content: center;
+		gap: 1rem;
 	}
 	article {
-		display: grid;
-		gap: 0.5rem;
-		align-content: start;
-		justify-content: start;
-		justify-items: center;
+		position: relative;
+
+		button {
+			position: absolute;
+			color: #fff;
+			text-decoration: overline;
+			top: 20px;
+			left: 20px;
+			z-index: 2;
+			text-transform: capitalize;
+			padding: 0.2rem;
+			height: fit-content;
+			font-weight: 600;
+			&:hover {
+				transform: scale(1.1);
+			}
+		}
 	}
 	iframe {
-		width: 350px;
+		position: relative;
+		z-index: 1;
+		width: 100%;
 	}
 </style>

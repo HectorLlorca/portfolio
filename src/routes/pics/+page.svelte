@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
 	import type { PageServerData } from './$types';
+	import { MasonryGrid } from '@egjs/svelte-grid';
 
 	import AnimatedTitle from '../../components/animated_title/animatedTitle.svelte';
 	import SectionButton from '../../components/section_button/sectionButton.svelte';
@@ -13,6 +14,8 @@
 	let url = $page.url.pathname;
 	export let data: PageServerData;
 	const pics = data.data;
+
+	console.log(pics);
 
 	onMount(() => {
 		if (!$load && $storeWidth > 768) {
@@ -37,10 +40,10 @@
 		<div class="hero">
 			<AnimatedTitle title={'Pics That I Took'} />
 		</div>
-		<div in:fade={{ duration: 1200 }} class="articles-section">
+		<div class="images-container">
 			{#each pics as pic (pic.id)}
 				<article>
-					<label for={'my-modal-img' + pic.id} class="modal-img">
+					<label for={'my-modal-img' + pic.id} class="modal-img-icon">
 						<ion-icon name="scan-outline" />
 					</label>
 
@@ -52,7 +55,7 @@
 							<p>{pic.description}</p>
 						</label>
 					</label>
-					<img src={pic.img} alt="pic" class="rounded-box" />
+					<img src={pic.img} alt="pic" class="rounded-box grid-img" />
 				</article>
 			{/each}
 		</div>
@@ -62,26 +65,23 @@
 <style lang="scss">
 	section {
 		display: grid;
+		align-content: start;
 		gap: 3rem;
 		background-color: var(--pics-bg-color);
 	}
-	.articles-section {
+	.images-container {
 		display: grid;
-		gap: 2rem;
-		justify-items: center;
+		grid-template-columns: repeat(auto-fit, minmax(300px, 450px));
+		align-items: center;
+		grid-template-rows: 1fr, min-content;
 		justify-content: center;
-		grid-template-columns: repeat(auto-fit, minmax(300px, 500px));
+		gap: 0.8rem;
+	}
 
-		article {
-			position: relative;
-			display: grid;
-			place-self: center;
-			img {
-				-webkit-box-shadow: 0px 0px 36px -2px rgba(0, 0, 0, 0.87);
-				-moz-box-shadow: 0px 0px 36px -2px rgba(0, 0, 0, 0.87);
-				box-shadow: 0px 0px 36px -2px rgba(0, 0, 0, 0.87);
-			}
-		}
+	article {
+		position: relative;
+		display: grid;
+		width: fit-content;
 	}
 
 	.modal-box-img {
@@ -90,11 +90,18 @@
 		gap: 0.5rem;
 		min-height: fit-content;
 		min-width: 80dvw;
+	}
 
-		img {
-			width: 100%;
-			height: 100%;
-		}
+	img {
+		width: 100%;
+		height: 100%;
+		-webkit-box-shadow: 0px 0px 36px -2px rgba(0, 0, 0, 0.87);
+		-moz-box-shadow: 0px 0px 36px -2px rgba(0, 0, 0, 0.87);
+		box-shadow: 0px 0px 36px -2px rgba(0, 0, 0, 0.87);
+	}
+
+	.grid-img {
+		max-width: 450px;
 	}
 	.vertical {
 		min-width: 50dvw;
@@ -109,7 +116,7 @@
 		cursor: pointer;
 		transform: scale(1.1);
 	}
-	.modal-img {
+	.modal-img-icon {
 		position: absolute;
 		top: 0;
 		right: 0;
