@@ -39,7 +39,7 @@
 </script>
 
 <button
-	on:click={(e) => handleRoute('/' + section.toLowerCase(), e)}
+	on:click|once={(e) => handleRoute('/' + section.toLowerCase(), e)}
 	class="btn sec-btn"
 	style={`background-color:${bgColors['/' + section]}`}>
 	<img src={img['/' + section]} alt="cv-icon" />

@@ -139,6 +139,14 @@
 			</div>
 		</div>
 	</div>
+
+	<div class="proyectos">
+		<h4>Projects</h4>
+		<!-- //https://hectorllorca.github.io/aerolab-challenge-vite/ -->
+		<!-- //https://layuvi.vercel.app/ -->
+		<!-- //https://level-one-abelton-about-copy.vercel.app/ -->
+		<!-- //https://hectorllorca.github.io/carta-interactiva/  -->
+	</div>
 </section>
 
 <style>
