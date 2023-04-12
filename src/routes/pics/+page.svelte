@@ -1,7 +1,6 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
 	import type { PageServerData } from './$types';
-	import { MasonryGrid } from '@egjs/svelte-grid';
 
 	import AnimatedTitle from '../../components/animated_title/animatedTitle.svelte';
 	import SectionButton from '../../components/section_button/sectionButton.svelte';
@@ -9,13 +8,10 @@
 	import { load } from '$lib/stores.js';
 	import { animate, stagger } from 'motion';
 	import { storeWidth } from '$lib/stores.js';
-	import { fade } from 'svelte/transition';
 
 	let url = $page.url.pathname;
 	export let data: PageServerData;
 	const pics = data.data;
-
-	console.log(pics);
 
 	onMount(() => {
 		if (!$load && $storeWidth > 768) {
