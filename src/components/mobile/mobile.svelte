@@ -63,7 +63,7 @@
 </nav>
 <div class="mod" class:close={!modOpen} style={bg}>
 	<button on:click={() => handleRoute('/')}>
-		<img src={$theme == 'lofi' ? cv : wcv} alt="cv-icon" />
+		<img src={$theme == 'corporate' ? cv : wcv} alt="cv-icon" />
 	</button>
 	<button on:click={() => handleRoute('/food')}>
 		<img src={food} alt="food-icon" />
