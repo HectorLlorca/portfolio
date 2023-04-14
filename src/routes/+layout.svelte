@@ -32,7 +32,7 @@
 {/if}
 
 <style>
-	.main {
+	main {
 		min-height: 100%;
 	}
 	:global(.container) {
@@ -46,6 +46,7 @@
 	}
 	:global(section) {
 		padding: 2rem;
+		min-height: 100%;
 		width: 60px;
 	}
 

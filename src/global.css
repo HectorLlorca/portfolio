@@ -4,11 +4,14 @@
 :root {
 	/* colors */
 
-	--corporate-bg-color: #ffff;
-	--halloween-bg-color: #212121;
+	--lofi-bg-color: #ffff;
+	--black-bg-color: #000000;
 	--food-bg-color: rgb(94, 163, 236);
 	--music-bg-color: rgb(246, 68, 68);
 	--pics-bg-color: rgb(255, 180, 0);
+
+	--lofi-text-color: #000000;
+	--black-text-color: #ffffff;
 }
 
 html,

@@ -29,12 +29,12 @@
 		'/Pics': 'var(--pics-bg-color)'
 	};
 	let img = {
-		'/': $theme == 'corporate' ? cv : wcv,
+		'/': $theme == 'lofi' ? cv : wcv,
 		'/Food': food,
 		'/Music': music,
 		'/Pics': camara
 	};
-	$: h1Color = $theme == 'corporate' ? 'black' : '#d3d3d3';
+	$: h1Color = $theme == 'lofi' ? 'black' : '#d3d3d3';
 	onMount(() => {});
 </script>
 

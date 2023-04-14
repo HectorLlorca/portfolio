@@ -4,7 +4,7 @@ import { browser } from '$app/environment';
 let storageTheme
 
 if  (browser) {
-    storageTheme=localStorage.getItem('theme') || 'corporate';
+    storageTheme=localStorage.getItem('theme') || 'lofi';
 }
  
 export const theme= writable(storageTheme);
