@@ -38,24 +38,22 @@
 			toogleTheme.checked = false;
 		}
 
-		// const info = document.querySelector('.info');
-		// let infoChildren = info?.children;
+		const me = document.querySelector('.me >div');
+		const h4 = document.querySelectorAll('h4');
+		const studies = document.querySelector('.studies>div');
+		const experience = document.querySelector('.experience>div');
+		let infoChildren = [h4, me, studies, experience];
 
-		// const split = new SplitType(infoChildren, {
-		// 	types: 'lines'
-		// });
+		const split = new SplitType(infoChildren, {
+			types: 'lines'
+		});
 		const sequence = [
-			// [
-			// 	split?.lines,
-			// 	{ y: [30, 0], opacity: [0, 1] },
-			// 	{ duration: 1, delay: stagger(0.2), at: '+0.8' }
-			// ],
-			['path', { opacity: [0, 1] }, { duration: 1, at: '-1.8' }],
 			[
-				'.tools-icons img',
-				{ y: [-500, 0], opacity: [0, 1] },
-				{ duration: 1, delay: stagger(0.05, { easing: 'ease' }), at: '-0.5' }
-			]
+				split.lines,
+				{ y: [30, 0], opacity: [0, 1] },
+				{ duration: 0.8, delay: stagger(0.1), at: '+0.8' }
+			],
+			['path', { opacity: [0, 1] }, { duration: 1, at: '-1.8' }]
 		];
 		timeline(sequence);
 	});
@@ -93,7 +91,12 @@
 	<div class="info">
 		<div class="me">
 			<h4>About me</h4>
-			<p>Im Héctor, a junior front-end developer, this is my portfolio and "blog".</p>
+			<div>
+				<p>
+					Hello, Im <strong class="font-black">Hector</strong>, a junior front-end developer, this
+					is my portfolio and "blog".
+				</p>
+			</div>
 		</div>
 
 		<div class="studies">
@@ -108,7 +111,7 @@
 					</a>
 				</p>
 				<p>- Learning Svelte, this site's built with Svelte.</p>
-				<p>- Learning animations, Gsap, Motion.</p>
+				<p>- Learning animations: Gsap, Motion.</p>
 				<p>- I would like start with Threejs, Blender.</p>
 			</div>
 		</div>
@@ -153,7 +156,7 @@
 								<h1>{project.name}</h1>
 								<p>{project.tools}</p>
 							</div>
-							<button class="btn rounded">live</button>
+							<a target="_blank" href={project.link}><button class="btn rounded">live</button></a>
 						</div>
 					</article>
 				{/each}
@@ -183,9 +186,11 @@
 	section {
 		display: grid;
 		gap: 3rem;
+		p {
+		}
 	}
 	h4 {
-		font-weight: 600;
+		font-weight: 700;
 	}
 	.info {
 		display: grid;
@@ -200,6 +205,11 @@
 		padding: 0.5rem 0;
 
 		border-top: 1px solid hsl(var(--pf));
+	}
+	.me > div,
+	.studies > div,
+	.experience > div {
+		display: grid;
 	}
 
 	.toogle {
