@@ -89,6 +89,8 @@
 		</label>
 	</div>
 
+	<h1 class="font-semibold text-2xl flex justify-center">(Work in progress)</h1>
+
 	<div class="info">
 		<div class="me">
 			<p>Im Héctor, a junior front-end developer, this is my portfolio and "blog".</p>
