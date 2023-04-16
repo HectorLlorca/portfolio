@@ -8,6 +8,7 @@
 	import { load } from '$lib/stores.js';
 	import { animate, stagger } from 'motion';
 	import { storeWidth } from '$lib/stores.js';
+	import Masonry from '../../components/masonry/masonry.svelte';
 
 	let url = $page.url.pathname;
 	export let data: PageServerData;
@@ -36,7 +37,7 @@
 		<div class="hero">
 			<AnimatedTitle title={'Pics That I Took'} />
 		</div>
-		<div class="images-container">
+		<Masonry stretchFirst={true} gridGap={'0.75rem'} colWidth={'minmax(300px, 450px)'} items={pics}>
 			{#each pics as pic (pic.id)}
 				<article>
 					<label for={'my-modal-img' + pic.id} class="modal-img-icon">
@@ -54,7 +55,7 @@
 					<img src={pic.img} alt="pic" class="rounded-box grid-img" />
 				</article>
 			{/each}
-		</div>
+		</Masonry>
 	</section>
 </div>
 
@@ -65,20 +66,11 @@
 		gap: 3rem;
 		background-color: var(--pics-bg-color);
 	}
-	.images-container {
-		display: grid;
-		grid-template-columns: repeat(auto-fit, minmax(300px, 450px));
-		align-items: center;
-		justify-content: center;
-		gap: 0.8rem;
-	}
-
 	article {
 		position: relative;
 		display: grid;
 		width: fit-content;
 	}
-
 	.modal-box-img {
 		display: grid;
 		align-content: start;
@@ -86,7 +78,6 @@
 		min-height: fit-content;
 		min-width: 80dvw;
 	}
-
 	img {
 		width: 100%;
 		height: 100%;
@@ -94,15 +85,6 @@
 		-moz-box-shadow: 0px 0px 36px -2px rgba(0, 0, 0, 0.87);
 		box-shadow: 0px 0px 36px -2px rgba(0, 0, 0, 0.87);
 	}
-
-	.grid-img {
-		max-width: 450px;
-	}
-	.vertical {
-		min-width: 50dvw;
-		min-height: 95dvh;
-	}
-
 	ion-icon {
 		padding: 1rem;
 		font-size: 30px;

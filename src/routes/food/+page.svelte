@@ -7,9 +7,8 @@
 	import { animate, stagger } from 'motion';
 	import { load } from '$lib/stores.js';
 	import { storeWidth } from '$lib/stores.js';
-
+	import Map from '../../components/map/map.svelte';
 	let url = $page.url.pathname;
-
 	onMount(() => {
 		if (!$load && $storeWidth > 768) {
 			animate(
@@ -27,7 +26,12 @@
 		<SectionButton section="" />
 	{/if}
 	<section class:current={url == '/food'}>
-		<AnimatedTitle title={'Food & Restaurants'} />
+		<div class="hero">
+			<AnimatedTitle title={'Food & Restaurants'} />
+		</div>
+		<div>
+			<Map locations={''} />
+		</div>
 	</section>
 	{#if $storeWidth > 768}
 		<SectionButton section="Music" />
@@ -37,6 +41,9 @@
 
 <style>
 	section {
+		display: grid;
+		align-content: start;
+		gap: 2rem;
 		background-color: var(--food-bg-color);
 	}
 </style>
