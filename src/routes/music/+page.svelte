@@ -7,7 +7,7 @@
 	import { onMount } from 'svelte';
 	import { storeWidth } from '$lib/stores.js';
 	import type { PageServerData } from './$types';
-	import { getMood } from './helpers.ts';
+	import { getMood } from './helpers.js';
 
 	let url = $page.url.pathname;
 	export let data: PageServerData;

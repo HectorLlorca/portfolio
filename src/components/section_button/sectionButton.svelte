@@ -59,6 +59,7 @@
 	}
 	.sec-btn img {
 		position: absolute;
+		pointer-events: none;
 		width: 30px;
 		height: 30px;
 		top: 100px;

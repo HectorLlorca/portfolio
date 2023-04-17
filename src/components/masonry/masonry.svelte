@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { animate, stagger } from 'motion';
 	import { onMount, onDestroy, getContext, setContext, tick } from 'svelte';
 	export let stretchFirst = false,
 		gridGap = '0.5em',
@@ -55,6 +56,14 @@
 	};
 	let _window;
 	onMount(() => {
+		animate(
+			'.__grid--masonry',
+			{ y: [24, 0], opacity: [0, 1] },
+			{ duration: 1, delay: stagger(0.1) }
+		);
+		setTimeout(() => {
+			refreshLayout();
+		}, 100);
 		_window = window;
 		_window.addEventListener('resize', refreshLayout, false); /* on resize */
 	});
