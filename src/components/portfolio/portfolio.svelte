@@ -49,13 +49,8 @@
 			types: 'lines'
 		});
 		const sequence = [
-			[
-				split.lines,
-				{ y: [30, 0], opacity: [0, 1] },
-				{ duration: 0.8, delay: stagger(0.2), at: '+0.8' }
-			],
-			[border, { opacity: [0, 1], y: [30, 0] }, { duration: 1, at: '-1.8' }],
-			['path', { opacity: [0, 1] }, { duration: 1, at: '-1.8' }]
+			[split.lines, { y: [30, 0], opacity: [0, 1] }, { delay: stagger(0.1), at: '<' }],
+			['path', { opacity: [0, 1] }, { duration: 1 }]
 		];
 		timeline(sequence);
 	});
