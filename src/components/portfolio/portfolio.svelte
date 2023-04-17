@@ -40,6 +40,7 @@
 
 		const me = document.querySelector('.me >div');
 		const h4 = document.querySelectorAll('h4');
+		const border = document.querySelectorAll('.info > div ');
 		const studies = document.querySelector('.studies>div');
 		const experience = document.querySelector('.experience>div');
 		let infoChildren = [h4, me, studies, experience];
@@ -51,8 +52,9 @@
 			[
 				split.lines,
 				{ y: [30, 0], opacity: [0, 1] },
-				{ duration: 0.8, delay: stagger(0.1), at: '+0.8' }
+				{ duration: 0.8, delay: stagger(0.2), at: '+0.8' }
 			],
+			[border, { opacity: [0, 1], y: [30, 0] }, { duration: 1, at: '-1.8' }],
 			['path', { opacity: [0, 1] }, { duration: 1, at: '-1.8' }]
 		];
 		timeline(sequence);

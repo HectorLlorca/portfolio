@@ -13,7 +13,7 @@
 	export let data: PageServerData;
 
 	const music = data.data;
-	const generes = ['happy', 'sad', 'beach', 'party', 'chill'];
+	const generes = ['all', 'happy', 'sad', 'beach', 'party', 'chill'];
 	let filter = music;
 
 	const setFilter = async (e) => {
@@ -47,7 +47,7 @@
 		</div>
 		<div class="filter-mood">
 			{#each generes as generes}
-				<button on:click={(e) => setFilter(e)} class="btn rounded-2xl px-8">{generes}</button>
+				<button on:click={(e) => setFilter(e)} class="btn rounded btn-sm">{generes}</button>
 			{/each}
 		</div>
 		<div class="articles-section">

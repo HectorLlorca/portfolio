@@ -9,7 +9,10 @@
 	import Map from '../../components/map/map.svelte';
 
 	let url = $page.url.pathname;
-	let filtros = ['tapas', 'sushi', 'brunch', 'burguer', 'pizza'];
+	export let data;
+	let food = data.data;
+
+	let filtros = ['all', 'tapas', 'sushi', 'brunch', 'burguer', 'pizza'];
 
 	const handleMarker = (e) => {
 		console.log(e.target.innerText);
@@ -35,10 +38,10 @@
 			<AnimatedTitle title={'Food & Restaurants'} />
 		</div>
 		<div class="map-section">
-			<Map locations={''} />
+			<Map locations={food} />
 			<div class="filtros">
 				{#each filtros as filtro}
-					<button class="btn" on:click={(e) => handleMarker(e)}>{filtro}</button>
+					<button class="btn rounded btn-sm" on:click={(e) => handleMarker(e)}>{filtro}</button>
 				{/each}
 			</div>
 		</div>
@@ -69,6 +72,8 @@
 			grid-template-columns: 1fr;
 			.filtros {
 				display: flex;
+				overflow-x: auto;
+				padding: 0.3rem 0;
 			}
 		}
 	}
