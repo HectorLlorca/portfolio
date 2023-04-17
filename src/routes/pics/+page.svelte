@@ -23,6 +23,13 @@
 			);
 			load.set(true);
 		}
+		let modalIcon = document.querySelectorAll('.modal-img-icon');
+		let gridImages = document.querySelectorAll('.grid-img');
+		animate(
+			[...gridImages, ...modalIcon],
+			{ y: [30, 0], opacity: [0, 1] },
+			{ duration: 1, delay: stagger(0.2) }
+		);
 	});
 </script>
 
@@ -39,7 +46,7 @@
 		</div>
 		<Masonry stretchFirst={true} gridGap={'0.75rem'} colWidth={'minmax(300px, 450px)'} items={pics}>
 			{#each pics as pic (pic.id)}
-				<article>
+				<article class="pic-article">
 					<label for={'my-modal-img' + pic.id} class="modal-img-icon">
 						<ion-icon name="scan-outline" />
 					</label>
@@ -78,9 +85,14 @@
 		min-height: fit-content;
 		min-width: 80dvw;
 	}
+	.vertical {
+		min-width: 50dvw;
+		min-height: 95dvh;
+	}
 	img {
 		width: 100%;
 		height: 100%;
+		z-index: 1;
 		-webkit-box-shadow: 0px 0px 36px -2px rgba(0, 0, 0, 0.87);
 		-moz-box-shadow: 0px 0px 36px -2px rgba(0, 0, 0, 0.87);
 		box-shadow: 0px 0px 36px -2px rgba(0, 0, 0, 0.87);
@@ -98,6 +110,7 @@
 		top: 0;
 		right: 0;
 		color: greenyellow;
+		z-index: 2;
 	}
 	@media (max-width: 768px) {
 		.modal-box-img {
