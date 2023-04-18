@@ -2,12 +2,23 @@
 	import { onMount } from 'svelte';
 	import { Loader } from '@googlemaps/js-api-loader';
 	import { PUBLIC_MAPS_KEY } from '$env/static/public';
+	import brunch from '$lib/assets/mapicons/brunch.png';
+	import pizza from '$lib/assets/mapicons/pizza.png';
+	import sushi from '$lib/assets/mapicons/sushi.png';
+	import tapas from '$lib/assets/mapicons/tapas.png';
+	import burguer from '$lib/assets/mapicons/burguer.png';
 
-	let map;
-	let currentIcon = 'https://maps.google.com/mapfiles/ms/icons/blue-dot.png';
 	export let locations: Object = [];
-	let mapElement: HTMLDivElement;
 	let apiKey = PUBLIC_MAPS_KEY; // Reemplaza con tu propia API Key de Google Maps
+	let map;
+	let mapElement: HTMLDivElement;
+	const icons = {
+		tapas,
+		brunch,
+		pizza,
+		sushi,
+		burguer
+	};
 
 	onMount(async () => {
 		const loader = new Loader({
@@ -21,10 +32,29 @@
 				zoom: 12
 			});
 			locations.forEach((location) => {
+				const infoWindowContent = `
+					<div>
+						<h2>${location.name}</h2>
+						
+					</div>
+					`;
+				const icon = {
+					url: icons[location.cocina], // url
+					scaledSize: new google.maps.Size(35, 35), // scaled size
+					origin: new google.maps.Point(0, 0), // origin
+					anchor: new google.maps.Point(0, 0) // anchor
+				};
 				const marker = new google.maps.Marker({
 					position: { lat: location.coord[0], lng: location.coord[1] },
 					map: map,
-					icon: currentIcon
+					icon: icon
+				});
+				const infoWindow = new google.maps.InfoWindow({
+					content: infoWindowContent
+				});
+
+				marker.addListener('click', () => {
+					infoWindow.open(map, marker);
 				});
 			});
 		} catch (error) {
