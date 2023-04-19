@@ -18,6 +18,7 @@
 	let url = $page.url.pathname;
 	export let data;
 	let food = data.data;
+	let foodImg;
 
 	let filtros = ['all', 'tapas', 'sushi', 'brunch', 'burguer', 'pizza'];
 	const icons = {
@@ -30,6 +31,10 @@
 
 	const handleMarker = (e) => {
 		console.log(e.target.innerText);
+	};
+	const handleScrollImg = () => {
+		foodImg.classlist.add('scrolled');
+		//
 	};
 	onMount(() => {
 		if (!$load && $storeWidth > 768) {
@@ -51,6 +56,7 @@
 		<div class="hero">
 			<AnimatedTitle title={'Food & Restaurants'} />
 		</div>
+
 		<div class="map-section">
 			<Map locations={food} />
 			<div class="filtros">
@@ -64,28 +70,34 @@
 				{/each}
 			</div>
 		</div>
+
 		<div class="food-articles-section">
 			{#each food as food}
 				<article>
-					<div class="card lg:card-side bg-primary-content shadow-xl">
-						<div class="carousel w-60">
-							{#each food.dishes as food, i}
-								<div id={'slide' + i} class="carousel-item relative w-full">
-									<img src="https://picsum.photos/200" alt="" />
-								</div>
-							{/each}
-						</div>
-						<div class="card-body">
-							<h2 class="card-title">{food.name}</h2>
+					<div
+						on:scroll={handleScrollImg}
+						bind:this={foodImg}
+						class={`carousel rounded-box ${
+							$storeWidth > 768 ? 'carousel-vertical h-96' : 'carousel-start w-full'
+						} `}>
+						{#each food.dishes as food, i}
+							<div class={`carousel-item h-96 `}>
+								<img src="https://picsum.photos/800" alt="" />
+							</div>
+						{/each}
+					</div>
+					<div class="food-info rounded">
+						<div>
+							<h2 class="text-xl font-bold">{food.name}</h2>
 							<p>{food.description}</p>
-							<div class="dishes">
-								<h1 class="text-lg font-semibold">Platos recomendados:</h1>
-								<p>{food.dishes.join(', ')}</p>
-							</div>
+						</div>
+						<div class="dishes">
+							<h1 class="text-lg font-semibold">Platos recomendados:</h1>
+							<p>{food.dishes.join(', ')}</p>
+						</div>
 
-							<div class="card-actions justify-end">
-								<button class="btn btn-primary">Map</button>
-							</div>
+						<div class="card-actions justify-end align-bottom">
+							<button class="btn btn-primary btn-sm rounded">Map</button>
 						</div>
 					</div>
 				</article>
@@ -118,15 +130,71 @@
 				height: 25px;
 			}
 		}
-		.dishes {
-			display: flex;
-		}
 		@media (max-width: 768px) {
 			grid-template-columns: 1fr;
 			.filtros {
 				display: flex;
 				overflow-x: auto;
 				padding: 0.3rem 0;
+			}
+		}
+	}
+	.carousel {
+		position: relative;
+	}
+	.carousel-item:first-of-type::before {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		color: #fff;
+		content: 'Scroll';
+		position: absolute;
+		font-size: 1.2rem;
+		font-weight: 600;
+		top: 0;
+		bottom: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		background-color: rgba(0, 0, 0, 0.7);
+		z-index: 1;
+	}
+	.carousel-item:first-of-type:hover::before {
+		content: '';
+		background-color: rgba(0, 0, 0, 0);
+		transition: background-color 0.5s ease;
+	}
+
+	.food-articles-section {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(300px, 500px));
+		gap: 0.5rem;
+		align-items: start;
+		justify-content: center;
+		article {
+			display: grid;
+			padding: 0.3rem;
+			align-items: center;
+			.food-info {
+				position: relative;
+				display: grid;
+				padding: 1rem;
+				padding-left: 2rem;
+				height: 100%;
+				justify-items: space-between;
+				align-items: end;
+				background-color: rgba(255, 255, 255, 0.7);
+				-webkit-box-shadow: 0px 0px 43px -5px rgba(0, 0, 0, 0.75);
+				-moz-box-shadow: 0px 0px 43px -5px rgba(0, 0, 0, 0.75);
+				box-shadow: 0px 0px 43px -5px rgba(0, 0, 0, 0.75);
+			}
+
+			img {
+				height: 100%;
+				width: 100%;
+			}
+			@media (max-width: 768px) {
+				grid-template-columns: 1fr;
 			}
 		}
 	}
