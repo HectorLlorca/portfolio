@@ -90,8 +90,10 @@
 			<h4>About me</h4>
 			<div>
 				<p>
-					Hello, Im <strong class="font-black">Hector</strong>, a junior front-end developer, this
-					is my portfolio and "blog".
+					Hello, Im <strong class="font-black">Hector</strong>. <br />I am a person with a lot of
+					interest in the IT world. I am currently creating a project where I am testing all my
+					knowledge and eagerly learning what I lack. I enjoy a good e-café with my colleagues and I
+					like to distract myself by playing basketball.
 				</p>
 			</div>
 		</div>
@@ -101,7 +103,7 @@
 			<div>
 				<p>- DAW, Insitut tecnològic Barcelona, 2019-2021.</p>
 				<p>
-					- Fullstack bootcamp, <a
+					- Fullstack bootcamp, MERN stack. <a
 						class="underline hover:font-bold"
 						href="https://fullstackopen.com/en/">
 						https://fullstackopen.com/en/ .
@@ -139,6 +141,18 @@
 				<img
 					src="https://cdn.iconscout.com/icon/free/png-256/mongodb-5-1175140.png"
 					alt="mongodb" />
+				<img
+					src="https://4.bp.blogspot.com/-pTRQOarwEFk/VgTFTZW_w3I/AAAAAAAABg8/XY4q2R3YNj0/w1200-h630-p-k-no-nu/postgresql-logo.png"
+					alt="postgresql" />
+				<img
+					src="https://iconape.com/wp-content/files/an/351546/png/tailwind-css-logo.png"
+					alt="tailwind" />
+				<img
+					src="https://th.bing.com/th/id/R.4dfe01148ebce3a9de8ab55279b0b4bc?rik=Cb%2f46GSGyzIMJA&pid=ImgRaw&r=0"
+					alt="node" />
+				<img
+					src="https://th.bing.com/th/id/OIP.oh500L-MZ-X1d9NfR7fMuwHaEb?pid=ImgDet&rs=1"
+					alt="nextjs" />
 			</div>
 		</div>
 

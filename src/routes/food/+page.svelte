@@ -164,6 +164,8 @@
 		background-color: rgba(0, 0, 0, 0);
 		transition: background-color 0.5s ease;
 	}
+	.carousel-item {
+	}
 
 	.food-articles-section {
 		display: grid;
