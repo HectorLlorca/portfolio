@@ -103,7 +103,7 @@
 			<div>
 				<p>- DAW, Insitut tecnològic Barcelona, 2019-2021.</p>
 				<p>
-					- Fullstack bootcamp, MERN stack. <a
+					- Fullstack bootcamp, MERN stack and more. <a
 						class="underline hover:font-bold"
 						href="https://fullstackopen.com/en/">
 						https://fullstackopen.com/en/ .
