@@ -158,6 +158,9 @@
 		height: 100%;
 		background-color: rgba(0, 0, 0, 0.7);
 		z-index: 1;
+		@media (max-width: 768px) {
+			content: 'Slide';
+		}
 	}
 	.carousel-item:first-of-type:hover::before {
 		content: '';
