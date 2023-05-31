@@ -50,7 +50,7 @@
 </script>
 
 <nav>
-	<div class="menu cross menu--2">
+	<div class="menu cross menu--2 z-90">
 		<label>
 			<input bind:this={input} on:click={handleMod} type="checkbox" />
 			<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
@@ -61,7 +61,7 @@
 		</label>
 	</div>
 </nav>
-<div class="mod" class:close={!modOpen} style={bg}>
+<div class="mod z-99" class:close={!modOpen} style={bg}>
 	<button on:click={() => handleRoute('/')}>
 		<img src={$theme == 'lofi' ? cv : wcv} alt="cv-icon" />
 	</button>

@@ -14,6 +14,7 @@
 	import github from '$lib/assets/github.png';
 	import gmail from '$lib/assets/gmail.png';
 	import linkedin from '$lib/assets/linkedin.png';
+	import AnimatedBg from '../animated_bg.svelte';
 
 	let toogleTheme: HTMLInputElement;
 	let url = $page.url.pathname;
@@ -57,7 +58,7 @@
 </script>
 
 <section data-theme={$theme} class:current={url === '/'} class={$theme}>
-	<div class="hero flex flex-col gap-10">
+	<div class="hero flex flex-col gap-10 relative">
 		<div class="header flex justify-between w-full">
 			<AnimatedTitle title={'This Is Me'} />
 
@@ -68,7 +69,7 @@
 				class="w-[200px] h-[200px] lg:w-[300px] lg:h-[300px]"
 				autoplay />
 		</div>
-		<div class="toogle">
+		<div class="toogle z-10">
 			<label class="swap swap-rotate">
 				<!-- this hidden checkbox controls the state -->
 				<input bind:this={toogleTheme} on:click={handleTheme} type="checkbox" />
@@ -91,9 +92,12 @@
 			</label>
 		</div>
 
-		<h1 class="font-semibold text-2xl flex justify-center">(Work in progress)</h1>
+		<h1 class="font-semibold text-2xl flex justify-center z-10">(Work in progress)</h1>
+		<!-- <div class="absolute right-0 left-0 bottom-[-50px] z-1">
+			<AnimatedBg />
+		</div> -->
 	</div>
-	<div class="info">
+	<div class="info z-10">
 		<div class="me">
 			<h4>About me</h4>
 			<div>
