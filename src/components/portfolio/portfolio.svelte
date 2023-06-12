@@ -69,7 +69,7 @@
 				class="w-[200px] h-[200px] lg:w-[300px] lg:h-[300px]"
 				autoplay />
 		</div>
-		<div class="toogle z-10">
+		<div class="toogle">
 			<label class="swap swap-rotate">
 				<!-- this hidden checkbox controls the state -->
 				<input bind:this={toogleTheme} on:click={handleTheme} type="checkbox" />
@@ -92,12 +92,9 @@
 			</label>
 		</div>
 
-		<h1 class="font-semibold text-2xl flex justify-center z-10">(Work in progress)</h1>
-		<!-- <div class="absolute right-0 left-0 bottom-[-50px] z-1">
-			<AnimatedBg />
-		</div> -->
+		<h1 class="font-semibold text-2xl flex justify-center">(Work in progress)</h1>
 	</div>
-	<div class="info z-10">
+	<div class="info">
 		<div class="me">
 			<h4>About me</h4>
 			<div>
